@@ -3,6 +3,8 @@ import UpdatableEntity from "../interfaces/UpdatableEntity";
 import CollideEntity from "../interfaces/CollideEntity";
 
 export default abstract class AbstractEntity implements DrawableEntity, UpdatableEntity, CollideEntity {
+    abstract w: number;
+    abstract h: number;
     abstract x1: number;
     abstract y1: number;
     abstract x2: number;

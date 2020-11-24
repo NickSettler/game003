@@ -2,7 +2,7 @@ import Rectangle, {DefaultRectangleOptions, RectangleOptions} from "./Rectangle"
 import AbstractEntity from "./AbstractEntity";
 import ColorfulEntity from "../interfaces/ColorfulEntity";
 import {LocalStorageStateObject} from "../types";
-import {World} from "./consts";
+import {World} from "../consts";
 
 export interface PlayerOptions extends RectangleOptions {
     ax: number;
@@ -49,14 +49,15 @@ export default class Player extends Rectangle implements PlayerOptions, Abstract
 
         const collidesEntity = collidesEntityLeft && collidesEntityTop && collidesEntityRight && collidesEntityBottom;
 
-        console.log(collidesEntity);
-
         if (collidesEntity) callback();
 
         return collidesEntity;
     }
 
     handleCollision(a: Player, b: AbstractEntity) {
+        const collidesX = a.x2 >= b.x1 && a.x1 <= b.x2;
+        const collidesY = a.y2 >= b.y1 && a.y1 <= b.y2;
+
         const aCenterX = (a.x2 - a.x1) / 2 + a.x1;
         const aCenterY = (a.y2 - a.y1) / 2 + a.y1;
         const bCenterX = (b.x2 - b.x1) / 2 + b.x1;
@@ -65,10 +66,9 @@ export default class Player extends Rectangle implements PlayerOptions, Abstract
         const deltaX = aCenterX - bCenterX;
         const deltaY = aCenterY - bCenterY;
 
-        if(deltaX < 0) {
-            a.ax = -a.ax;
-            a.vx = -a.vx;
-        }
+        const absDeltaX = Math.abs(deltaX);
+
+        console.log(absDeltaX - (b.w / 2 + a.w / 2));
     }
 
     update(keys: Map<string, boolean>): void {
