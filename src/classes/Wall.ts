@@ -1,8 +1,5 @@
 import Rectangle from "./Rectangle";
 import AbstractEntity from "./AbstractEntity";
-import ColorfulEntity from "../interfaces/ColorfulEntity";
-import DrawableEntity from "../interfaces/DrawableEntity";
-import CollideEntity from "../interfaces/CollideEntity";
 
 export default class Wall extends Rectangle implements AbstractEntity {
     color: string;
