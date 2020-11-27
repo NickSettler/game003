@@ -13,10 +13,10 @@ player.color = "#ff00ff";
 
 const borderWalls: Array<Wall> = [
     new Wall({
-        x: -5, y: 0, w: 10, h: height
+        x: -5, y: 0, w: 5, h: height
     }),
     new Wall({
-        x: 0, y: -5, w: width, h: 10
+        x: 0, y: -5, w: width, h: 5
     }),
     new Wall({
         x: width, y: 0, w: 5, h: height
